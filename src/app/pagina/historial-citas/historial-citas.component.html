@@ -1,0 +1,55 @@
+<div class="card">
+    <div class="card-header ps-5 pt-4 pb-4">
+      <h5 class="mb-0">
+        <i class="fa-solid fa-comments me-3"></i>Historial CITAS
+      </h5>
+    </div>
+    <div class="card-body p-5">
+      <div class="mb-3">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Id Medico</th>
+              <th>Id Cita</th>
+              <th>Nombre Paciente</th>
+              <th>Fecha Cita</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr *ngFor="let item of medico">
+              <td>
+                <p>{{ item.idMedico }}</p>
+              </td>
+              <td>
+                <p>{{ item.idCita }}</p>
+              </td>
+              <td>
+                <p>{{ item.nombrePaciente }}</p>
+              </td>
+              <td>
+                <p>{{ item.fecha }}</p>
+              </td>
+  
+              <td>
+                <span
+                  [ngClass]="
+                    item.estado == 'CERRADO' ? 'text-bg-success' : 'text-bg-danger'
+                  "
+                  class="badge"
+                  >{{ item.estado }}</span
+                >
+              </td>
+  
+              <td>
+                <a routerLink="/detalle-cita-medico/{{ item.idCita }}"
+                  ><i class="fa-solid fa-circle-info me-2"></i>Ver Detalle Cita</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

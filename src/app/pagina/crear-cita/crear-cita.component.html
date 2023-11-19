@@ -1,0 +1,93 @@
+<div class="card">
+  <div class="card-header ps-5 pt-4 pb-4">
+    <h5 class="mb-0">
+      <i class="fa-solid fa-file-circle-plus me-2"></i>Crear nueva Cita
+    </h5>
+  </div>
+  <div class="card-body p-5">
+    <form #f="ngForm" (ngSubmit)="crearCita()">
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Especilidad: </label>
+        <div class="col-sm-5">
+          <select
+            name="especialidad"
+            required
+            (change)="buscarMedicos($event)"
+            class="form-select"
+            [(ngModel)]="registroCitaDTO.especialidad"
+          >
+            <option value="" selected>Seleccione una Especilidad</option>
+            <option
+              [value]="item"
+              *ngFor="let item of especialidades; index as i"
+            >
+              {{ item }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Medico: </label>
+        <div class="col-sm-5">
+          <select
+            name="ciudad"
+            required
+            class="form-select"
+            [(ngModel)]="registroCitaDTO.codigoMedico"
+          >
+            <option value="" selected>Seleccione el medico</option>
+            <option
+              [value]="item.idMedico"
+              *ngFor="let item of listaMedicos; index as i"
+            >
+              {{ item.nombre }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Fecha de la cita: </label>
+        <div class="col-sm-10">
+          <input
+            #fecha="ngModel"
+            [ngClass]="
+              fecha.invalid && (fecha.dirty || fecha.touched)
+                ? 'is-invalid'
+                : ''
+            "
+            type="datetime-local"
+            [(ngModel)]="registroCitaDTO.fecha"
+            name="motivo"
+            required
+            class="form-control"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Motivo: </label>
+        <div class="col-sm-10">
+          <textarea
+            #motivo="ngModel"
+            [ngClass]="
+              motivo.invalid && (motivo.dirty || motivo.touched)
+                ? 'is-invalid'
+                : ''
+            "
+            type="text"
+            [(ngModel)]="registroCitaDTO.motivo"
+            name="motivo"
+            required
+            class="form-control"
+          ></textarea>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="f.invalid">
+        <i class="fa-solid fa-circle-plus me-1"></i>Crear Cita
+      </button>
+      <app-alerta [alerta]="alerta"></app-alerta>
+    </form>
+  </div>
+</div>

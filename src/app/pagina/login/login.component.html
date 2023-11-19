@@ -1,0 +1,55 @@
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first">
+      
+    </div>
+    <app-alerta [alerta]="alerta"></app-alerta>
+    <form class="container" (ngSubmit)="login()">
+      <div class="mb-3">
+        <i class="bi bi-person-circle"></i>
+        <input
+          type="email"
+          class="form-control"
+          #email="ngModel"
+          name="email"
+          [(ngModel)]="loginDTO.correo"
+          placeholder="Nombre de Usuario"
+        />
+        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+          Usuario obligatorio
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <i class="bi bi-key"></i
+        ><input
+          type="password"
+          class="form-control"
+          [(ngModel)]="loginDTO.contrasenia"
+          #password="ngModel"
+          name="password"
+          id="exampleFormControlInput1"
+          placeholder="Contraseña"
+        />
+        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+          contraseña obligatoria
+        </div>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-outline-success">Ingresar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="container">
+  <app-inicio></app-inicio>
+</div>

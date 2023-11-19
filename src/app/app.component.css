@@ -1,0 +1,42 @@
+/* Estilos ajustados para un menú desplegable más pequeño y tierno */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    display: inline-block;
+    margin-right: 10px; /* Reduje el margen */
+    position: relative;
+  }
+  
+  ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #4a90e2;
+    border: 1px solid #295bb0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    min-width: 120px; /* Añadí un ancho mínimo */
+  }
+  
+  li:hover > ul {
+    display: block;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    padding: 8px; /* Reduje el padding */
+    font-size: 14px; /* Añadí un tamaño de fuente más pequeño */
+  }
+  
+  a:hover {
+    background-color: #295bb0;
+    color: #ffffff;
+  }
+  

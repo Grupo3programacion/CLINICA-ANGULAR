@@ -1,0 +1,273 @@
+<div class="card">
+  <div class="card-header ps-5 pt-4 pb-4">
+    <h5 class="mb-0">
+      <i class="fa-solid fa-user-plus me-3"></i>Registro de un nuevo paciente
+    </h5>
+  </div>
+
+  <div class="card-body p-5">
+    <form #f="ngForm">
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Cedula: </label>
+        <div class="col-sm-5">
+          <input
+            #cedula="ngModel"
+            [ngClass]="
+              cedula.invalid && (cedula.dirty || cedula.touched)
+                ? 'is-invalid'
+                : ''
+            "
+            type="text"
+            name="cedula"
+            class="form-control"
+            required
+            [(ngModel)]="registroPacienteDTO.cedula"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Nombre: </label>
+        <div class="col-sm-5">
+          <input
+            #nombrePaciente="ngModel"
+            [ngClass]="
+              nombrePaciente.invalid &&
+              (nombrePaciente.dirty || nombrePaciente.touched)
+                ? 'is-invalid'
+                : ''
+            "
+            type="text"
+            name="nombre"
+            class="form-control"
+            required
+            [(ngModel)]="registroPacienteDTO.nombrePaciente"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Apellido: </label>
+        <div class="col-sm-5">
+          <input
+            #apellidoPaciente="ngModel"
+            [ngClass]="
+              apellidoPaciente.invalid &&
+              (apellidoPaciente.dirty || apellidoPaciente.touched)
+                ? 'is-invalid'
+                : ''
+            "
+            type="text"
+            name="apellido"
+            class="form-control"
+            required
+            [(ngModel)]="registroPacienteDTO.apellidoPaciente"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Telefono: </label>
+        <div class="col-sm-5">
+          <input
+            #telefonoPaciente="ngModel"
+            [ngClass]="
+              telefonoPaciente.invalid &&
+              (telefonoPaciente.dirty || telefonoPaciente.touched)
+                ? 'is-invalid'
+                : ''
+            "
+            type="text"
+            name="telefono"
+            class="form-control"
+            required="true"
+            [(ngModel)]="registroPacienteDTO.telefonoPaciente"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Foto: </label>
+        <div class="col-sm-8">
+          <input
+            type="file"
+            class="form-control"
+            name="foto"
+            (change)="onFileChange($event)"
+          />
+        </div>
+        <div class="col-sm-2">
+          <button
+            type="submit"
+            [disabled]="archivos == null"
+            class="btn btn-primary"
+            (click)="subirImagen()"
+          >
+            <i class="fa-solid fa-cloud-arrow-up me-2"></i>Subir Foto
+          </button>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Ciudad: </label>
+        <div class="col-sm-5">
+          <select
+            name="ciudad"
+            required
+            class="form-select"
+            [(ngModel)]="registroPacienteDTO.ciudadPaciente"
+          >
+            <option value="" selected>Seleccione una ciudad</option>
+            <option [value]="item" *ngFor="let item of ciudades; index as i">
+              {{ item }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">fecha Nacimiento: </label>
+        <div class="col-sm-5">
+          <input
+            #fechaNacimiento="ngModel"
+            [ngClass]="
+              fechaNacimiento.invalid &&
+              (fechaNacimiento.dirty || fechaNacimiento.touched)
+                ? 'is-invalid'
+                : ''
+            "
+            type="date"
+            name="fechaNacimiento"
+            class="form-control"
+            required="true"
+            [(ngModel)]="registroPacienteDTO.fechaNacimiento"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Alergias: </label>
+        <div class="col-sm-5">
+          <select
+            name="alergia"
+            required
+            class="form-select"
+            [(ngModel)]="registroPacienteDTO.tipoAlergia"
+          >
+            <option value="" selected>Seleccione una alergia</option>
+            <option [value]="item" *ngFor="let item of tipoAlergia; index as i">
+              {{ item }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">EPS: </label>
+        <div class="col-sm-5">
+          <select
+            name="eps"
+            required
+            class="form-select"
+            [(ngModel)]="registroPacienteDTO.epsPaciente"
+          >
+            <option value="" selected>Seleccione una EPS</option>
+            <option [value]="item" *ngFor="let item of tipoEps; index as i">
+              {{ item }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Tipo de Sangre: </label>
+        <div class="col-sm-5">
+          <select
+            name="tipoSangre"
+            required
+            class="form-select"
+            [(ngModel)]="registroPacienteDTO.tipoSangre"
+          >
+            <option value="" selected>Seleccione un tipo de sangre</option>
+            <option [value]="item" *ngFor="let item of tipoSangres; index as i">
+              {{ item }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Correo electronico: </label>
+        <div class="col-sm-5">
+          <input
+            #emailPaciente="ngModel"
+            [ngClass]="
+              emailPaciente.invalid &&
+              (emailPaciente.dirty || emailPaciente.touched)
+                ? 'is-invalid'
+                : ''
+            "
+            type="email"
+            name="correo"
+            class="form-control"
+            required
+            email
+            [(ngModel)]="registroPacienteDTO.emailPaciente"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Contraseña: </label>
+        <div class="col-sm-5">
+          <input
+            #contrasenia="ngModel"
+            [ngClass]="
+              contrasenia.invalid && (contrasenia.dirty || contrasenia.touched)
+                ? 'is-invalid'
+                : ''
+            "
+            type="password"
+            name="password"
+            class="form-control"
+            required
+            [(ngModel)]="registroPacienteDTO.contrasenia"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Repetir Contraseña: </label>
+        <div class="col-sm-5">
+          <input
+            #confirmarContrasenia="ngModel"
+            [ngClass]="
+              confirmarContrasenia.invalid &&
+              (confirmarContrasenia.dirty || confirmarContrasenia.touched)
+                ? 'is-invalid'
+                : ''
+            "
+            type="password"
+            name="confirmaPassword"
+            class="form-control"
+            [(ngModel)]="registroPacienteDTO.confirmarContrasenia"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="alert alert-danger" role="alert" *ngIf="!sonIguales()">
+        Las contraseñas no coinciden
+      </div>
+      <button
+        (click)="registrar()"
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="f.invalid || !sonIguales()"
+      >
+        <i class="fa-solid fa-circle-plus me-1"></i>Registrarse
+      </button>
+      <app-alerta [alerta]="alerta"></app-alerta>
+    </form>
+  </div>
+</div>

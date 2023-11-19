@@ -1,0 +1,96 @@
+<div class="card">
+  <div class="card-header ps-5 pt-4 pb-4">
+    <h5 class="mb-0">
+      <i class="fa-solid fa-file-circle-plus me-2"></i>Detalle PQRS
+    </h5>
+  </div>
+  <div class="card-body p-5">
+    <form #f="ngForm" >
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Codigo PQRS: </label>
+        <div class="col-sm-5">
+          <input
+            name="codigo"
+            required
+            readonly
+            class="form-control"
+            [(ngModel)]="detallePQRSDTO.codigo"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Estado de la PQRS: </label>
+        <div class="col-sm-5">
+          <input
+            name="estado"
+            required
+            readonly
+            class="form-control"
+            [(ngModel)]="detallePQRSDTO.estado"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Fecha de la PQRS: </label>
+        <div class="col-sm-10">
+          <input
+            #fecha="ngModel"
+            [ngClass]="
+              fecha.invalid && (fecha.dirty || fecha.touched)
+                ? 'is-invalid'
+                : ''
+            "
+            type="date"
+            [(ngModel)]="detallePQRSDTO.fecha"
+            name="fecha"
+            required
+            readonly
+            class="form-control"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Codigo Cita: </label>
+        <div class="col-sm-10">
+          <textarea
+            #motivo="ngModel"
+            [ngClass]="
+              motivo.invalid && (motivo.dirty || motivo.touched)
+                ? 'is-invalid'
+                : ''
+            "
+            type="text"
+            [(ngModel)]="detallePQRSDTO.codigoCita"
+            name="codigoCita"
+            required
+            readonly
+            class="form-control"
+          ></textarea>
+        </div>
+      </div>
+      
+      <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Motivo: </label>
+        <div class="col-sm-10">
+          <textarea
+            #motivo="ngModel"
+            [ngClass]="
+              motivo.invalid && (motivo.dirty || motivo.touched)
+                ? 'is-invalid'
+                : ''
+            "
+            type="text"
+            [(ngModel)]="detallePQRSDTO.motivo"
+            name="motivo"
+            required
+            readonly
+            class="form-control"
+          ></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
